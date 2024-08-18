@@ -1,0 +1,50 @@
+@startuml
+
+title Сущности
+
+entity Post {
+	+ **ID** xid
+	ID поста
+	Ключ идемпотентности
+	+ **UserID** xid
+	ID автора поста
+	+ **Title** string
+	Заголовок поста
+	+ **Content** string
+	Содержание поста
+	+ **CreatedAt** time
+	Время создания поста
+	+ **UpdatedAt** time
+	Время обновления поста
+}
+
+entity PostSettings {
+	+ **ID** xid
+	ID поста
+	+ **CommentsEnabled** bool
+	Комментарии разрешены
+}
+
+entity Comment {
+	+ **ID** xid
+	ID комментария
+	Ключ идемпотентности
+	+ **ParentID** xid
+	ID родительского комментария
+	Для первого комментария ParentID равен ID
+	+ **PostID** xid
+	ID поста
+	+ **UserID** xid
+	ID автора комментария
+	+ **Content** string
+	Содержание комментария
+	+ **CreatedAt** time
+	Время создания комментария
+	+ **UpdatedAt** time
+	Время обновления комментария
+}
+
+Comment --> Post
+PostSettings - Post
+
+@enduml

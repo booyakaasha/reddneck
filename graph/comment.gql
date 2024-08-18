@@ -1,0 +1,31 @@
+#определяем тип комментария 
+type Comment {
+  id: ID!
+  parentId: ID
+  postId: ID!
+  userId: ID!
+  content: String!
+  createdAt: String!
+  updatedAt: String!
+  replies: [Comment!]!
+}
+
+input CreateCommentInput {
+    id: ID!
+    author: String!
+    content: String!
+    post: ID!
+}
+
+#принимаем входные данные и возвращаем созданный комментарий
+type Mutation {
+    createComment(parentId: ID, postId: ID!, userId: ID!, content: String!): Comment!
+}
+
+# type Subscription {
+#     commentAdded(postId: ID!): Comment! #подписываемся на обновления 
+# }
+
+type Query {
+    comments(postId: ID!): [Comment!]!comments: [Comment!]! 
+}

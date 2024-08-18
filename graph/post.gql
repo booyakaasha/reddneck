@@ -1,0 +1,51 @@
+#определяем тип поста
+type Post {
+  id: ID!
+  userId: ID!
+  title: String!
+  content: String!
+  createdAt: String!
+  updatedAt: String!
+  comments: [Comment!]!
+}
+
+type CommentPage {
+    comment: [Comment!]!
+    totalCount: Int! #общее количество комментариев 
+}
+
+# -\-\ входные данные для создания поста
+input CreatePostInput {
+    author: String!
+    content: String!
+    title: String!
+    commentEnable: Boolean! #вкл/выкл комментариев
+}
+
+#принимаем входные данные и возвращаем созданный пост 
+type Mutation {
+  createPost(userId: ID!, title: String!, content: String!): Post!
+}
+
+
+type Subscription {
+    PostCreated: Post! # Подписка на создание нового поста
+    CommentAdded(postId: ID!): Comment! # подписка на добавление комментария к посту
+}
+
+# type Query {
+#   posts: [Post!]!
+#   post(id: ID!): Post
+#   comments(postId: ID!): [Comment!]!
+# }
+
+type Query {
+  posts(page: Int, limit: Int): PostPage! # пагинация постов типа
+  post(id: ID!): Post!
+}
+
+# тип для страницы постов
+type PostPage {
+  posts: [Post!]!
+  totalCount: Int! # общее количество постов
+}

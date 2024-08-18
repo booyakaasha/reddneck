@@ -1,0 +1,14 @@
+name: "reddneck-test"
+services:
+  postgres:
+    image: postgres:15.8-alpine
+    restart: unless-stopped
+    ports:
+      - "${TEST_PG_PORT}:5432"
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 1s
+      retries: 10
