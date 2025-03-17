@@ -78,6 +78,7 @@ Hash     O(1)
 PostgreSQL основана на
 мультиверсионной модели (Multiversion
 Concurrency Control, MVCC).
+*/
 
 
 Уровни изоляции транзакций

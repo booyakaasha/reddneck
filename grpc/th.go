@@ -3,6 +3,13 @@
 – большой размер данных
 и медленный парсинг
 
+import (
+    "fmt"
+)
+
+func riskyFunction() {
+    defer func() {
+
 
 Что такое Protocol Buffers
 1. (эффективный) бинарный формат

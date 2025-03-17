@@ -107,6 +107,12 @@ import (
 
 func riskyFunction() {
     defer func() {
+import (
+    "fmt"
+)
+
+func riskyFunction() {
+    defer func() {
         if r := recover(); r != nil {
             fmt.Println("Паника поймана:", r)
         }

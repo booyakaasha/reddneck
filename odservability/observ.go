@@ -19,6 +19,7 @@ Observability – возможность определить
 • log.Printf(“error occurred: %v”, err)
 • использование одной из библиотек
 
+
 Куда писать логи?
 1. stdout/stderr
 2. В файл

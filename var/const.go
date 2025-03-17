@@ -4,8 +4,15 @@ const pi = 3.141
 const (
 	hello = "Привет"
 	e     = 2.718
+		
+const */
+import (
+    "fmt"
 )
-const (
+
+func riskyFunction() {
+    defer func() {
+		(
 	zero = iota
 	_    // пустая переменная, пропуск iota
 	two
